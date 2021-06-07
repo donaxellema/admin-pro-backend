@@ -10,11 +10,15 @@ const app = express();
 //Configurar CORS
 app.use(cors());
 
+//Letura y parseo del body se coloca siempre antes de las rutas
+app.use(express.json() )
+
+
 /**En teoria use es un middleware */
 
 /** datos bdd mongo
  * pass:admin1mongo+
- * user: dbalex
+ * user: mean_usuario
  * npm i dotenv (para variables de entorno)
  */
 
@@ -22,20 +26,30 @@ app.use(cors());
 dbConnection();
 //console.log(process.env);
 
-
 //Rutas
+app.use( '/api/usuarios', require('./routes/usuario.route') );
+/**↑ Esto es un middleware son funciones que se ejecutan antes de llegar a otras */
+app.use( '/api/login', require('./routes/auth.route') );
+
 //req => datos del cliente
 //res => respuesta del servidor
 
-app.get('/',(req,res) => {
-    res.json({
-        ok:true,
-        msg:'Hola Mundo'
-    })
-});
+/* 
+ */
+
 
 
 app.listen(process.env.PORT, () => {
     console.log('Servidor corriendo en puerto '+process.env.PORT);
 });
 
+
+
+
+/**
+ * NOTA:
+ * El JWT consta de 3 partes 
+ * Herader
+ * Payload
+ * Firma
+ */
