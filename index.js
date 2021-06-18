@@ -29,7 +29,12 @@ dbConnection();
 //Rutas
 app.use( '/api/usuarios', require('./routes/usuario.route') );
 /**↑ Esto es un middleware son funciones que se ejecutan antes de llegar a otras */
+
+app.use( '/api/hospitales', require('./routes/hospitales.route') );
+app.use( '/api/medicos', require('./routes/medicos.route') );
+app.use( '/api/todo', require('./routes/busquedas.route') );
 app.use( '/api/login', require('./routes/auth.route') );
+app.use( '/api/upload', require('./routes/uploads.route') );
 
 //req => datos del cliente
 //res => respuesta del servidor

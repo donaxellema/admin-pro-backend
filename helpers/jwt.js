@@ -12,7 +12,8 @@ const generarJWT = (uid) => {
             uid,
         }
 
-         //el sing es para crear el token?
+         //el sing es para crear el token? al aprecer ayuda a crear el token
+         //jwt con sing  
         jwt.sign(payload, process.env.JWT_SECRET,{
             expiresIn:'12h'
         },(err,token)=>{
@@ -25,7 +26,6 @@ const generarJWT = (uid) => {
             }
 
         });
-
 
     });
 
