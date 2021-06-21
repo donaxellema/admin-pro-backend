@@ -34,7 +34,10 @@
  
  router.put('/:id',
  [
-     
+   validarJWT,
+   check('nombre','El nombre del medico es necesario').not().isEmpty(),
+   check('hospital','EL hostial id debe ser valido').isMongoId(),//validacion exclusiva para id de mongos
+        validarCampos
  ],
  actualizarMedico);
  

@@ -91,12 +91,27 @@ const googleSingIn= async(req,res=response)=>{
             ok:false,
             msg:'Token no es correcto'
         })
-    }
-
-    
+    }    
 }
+
+const renewToken = async (req,res=response) =>{
+
+    //el usuario debe de grabar ya sea en el local storage o algun lugar de la maquina y 
+    //proveelor despues para hacer las peticiones    
+    
+    const uid= req.uid;
+    //Generar el JWToken -JWT
+    const token = await generarJWT(uid);
+
+    res.json({
+        ok:true,
+        token
+    })
+};
 
 module.exports={
     login,
-    googleSingIn
+    googleSingIn,
+    renewToken
+
 }
