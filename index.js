@@ -26,6 +26,10 @@ app.use(express.json() )
 dbConnection();
 //console.log(process.env);
 
+//Directorio publico
+
+app.use(express.static('public'));
+
 //Rutas
 app.use( '/api/usuarios', require('./routes/usuario.route') );
 /**↑ Esto es un middleware son funciones que se ejecutan antes de llegar a otras */
